@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Projet_Audit.Models.UserEnregistrement>
+@using Projet_Audit.Models
+@{
+    ViewBag.Title = "Result";
+}
+@{
+    IEnumerable<Risque> risques = ViewBag.risques as IEnumerable<Risque>;
+}
+
+<h2 class="text-center">Resultats</h2>
+@foreach (var record in Model)
+{
+     <div class="row " >
+    <h3><span class="glyphicon glyphicon-cog"></span>Votre Resultat de date :@record.Date.ToString()</h3>
+   @foreach (var risque in risques)
+    {
+        <h2 class="text-center">@risque.Type</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    @Html.DisplayName("N° Question")
+                </th>
+                <th>
+                    @Html.DisplayName("Question")
+                </th>
+                <th>
+                    @Html.DisplayName("Reponse")
+                </th>
+                <th>
+                    @Html.DisplayName("Commentaire")
+                </th>
+                <th>
+                    @Html.DisplayName("Coefficient")
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in record.UserResponses)
+            {
+
+                if (item.Question.Risque.Id_risque == risque.Id_risque)
+                {
+                    if (item.score != 0 && item.score != -1)
+                    {
+                        <tr class="success">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Question.NumQuestion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Question.MainQuestion)
+                            </td>
+                            <td>
+                                @if (item.score != 0 && item.score != -1)
+                                {
+                                    @Html.Label("oui", new { @class = "bg-success" });
+                                }
+                                else
+                                {
+                                    @Html.Label("non", new { @class = "bg-danger" });
+                                }
+                            </td>
+                            <td>
+                                @if (item.score == 0 || item.score == -1)
+                                {
+                                    @Html.DisplayFor(modelItem => item.Question.Commentaire);
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Question.Coefficient)
+                            </td>
+
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr class="danger">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Question.NumQuestion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Question.MainQuestion)
+                            </td>
+                            <td>
+                                @if (item.score != 0 && item.score != -1)
+                                {
+                                    @Html.Label("oui", new { @class = "bg-success" });
+                                }
+                                else
+                                {
+                                    @Html.Label("non", new { @class = "bg-danger" });
+                                }
+                            </td>
+                            <td>
+                                @if (item.score == 0 || item.score == -1)
+                                {
+                                    @Html.DisplayFor(modelItem => item.Question.Commentaire);
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Question.Coefficient)
+                            </td>
+
+                        </tr>
+                    }
+                }
+            }
+        </table>
+    }
+    @Html.ActionLink("PPT Export", "Export",new{ id = record.id_Record }, new { @class = "btn btn-success col-sm-offset-5 col-sm-2 " })
+   </div>
+}
+

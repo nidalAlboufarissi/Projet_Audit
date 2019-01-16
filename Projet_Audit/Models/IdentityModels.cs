@@ -33,6 +33,11 @@ namespace Projet_Audit.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<Projet_Audit.Models.Question> Questions { get; set; }
+        public virtual System.Data.Entity.DbSet<Projet_Audit.Models.Question> Questions { get; set; }
+        public virtual DbSet<Risque> Risques { get; set; }
+        public virtual DbSet<UserResponse> UserResponses { get; set; }
+        public virtual DbSet<UserRisque> UserRisques { get; set; }
+        public virtual DbSet<UserEnregistrement> UserEnregistrements { get; set; }
+
     }
 }

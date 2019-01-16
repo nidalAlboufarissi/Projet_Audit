@@ -12,6 +12,7 @@ namespace Projet_Audit
     {
         protected void Application_Start()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjAzODVAMzEzNjJlMzQyZTMwajRYL3dNNU4rTDB2VlZLRFB3QXZxRnZjVEpXaUxSS1JOSVpXRm1YR3ZFYz0=");
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

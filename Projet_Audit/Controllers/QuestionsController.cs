@@ -17,7 +17,8 @@ namespace Projet_Audit.Controllers
         // GET: Questions
         public ActionResult Index()
         {
-            return View(db.Questions.ToList());
+            var questions = db.Questions.Include(q => q.Risque);
+            return View(questions.ToList());
         }
 
         // GET: Questions/Details/5
@@ -38,6 +39,7 @@ namespace Projet_Audit.Controllers
         // GET: Questions/Create
         public ActionResult Create()
         {
+            ViewBag.Id_risque = new SelectList(db.Risques, "Id_risque", "Type");
             return View();
         }
 
@@ -46,8 +48,14 @@ namespace Projet_Audit.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Body")] Question question)
+        public ActionResult Create([Bind(Include = "Id_question,NumQuestion,MainQuestion,Reponse,Commentaire,Coefficient,Recommandation,MesurePropose,Id_risque")] Question question)
         {
+            Risque r = db.Risques.Find(question.Id_risque);
+            string[] s = r.Type.Split(' ');
+            string num = "";
+            foreach (var i in s)
+                num += i.ElementAt(0) + "";
+            question.NumQuestion = num + "" + (Convert.ToInt16(db.Questions.Where(q => q.Id_risque == r.Id_risque).Count().ToString()) + 1);
             if (ModelState.IsValid)
             {
                 db.Questions.Add(question);
@@ -55,6 +63,7 @@ namespace Projet_Audit.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.Id_risque = new SelectList(db.Risques, "Id_risque", "Type", question.Id_risque);
             return View(question);
         }
 
@@ -70,6 +79,7 @@ namespace Projet_Audit.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Id_risque = new SelectList(db.Risques, "Id_risque", "Type", question.Id_risque);
             return View(question);
         }
 
@@ -78,7 +88,7 @@ namespace Projet_Audit.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Body")] Question question)
+        public ActionResult Edit([Bind(Include = "Id_question,NumQuestion,MainQuestion,Reponse,Commentaire,Coefficient,Recommandation,MesurePropose,Id_risque")] Question question)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +96,7 @@ namespace Projet_Audit.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Id_risque = new SelectList(db.Risques, "Id_risque", "Type", question.Id_risque);
             return View(question);
         }
 

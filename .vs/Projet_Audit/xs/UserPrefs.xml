@@ -1,0 +1,21 @@
+﻿<Properties StartupConfiguration="{B206A137-7E16-4859-B9E4-98B8FCA8EE51}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Projet_Audit/Controllers/QuestionsController.cs">
+    <Files>
+      <File FileName="Projet_Audit/Controllers/QuestionsController.cs" Line="1" Column="1" />
+      <File FileName="Projet_Audit/Controllers/RisquesController.cs" Line="1" Column="1" />
+      <File FileName="Projet_Audit/Models/UserResponse.cs" Line="22" Column="69" />
+      <File FileName="Projet_Audit/Views/Shared/_Layout.cshtml" Line="29" Column="36" />
+      <File FileName="Projet_Audit/Views/Shared/_LoginPartial.cshtml" Line="1" Column="33" />
+      <File FileName="Projet_Audit/Models/UserRisque.cs" Line="22" Column="1" />
+      <File FileName="Projet_Audit/Models/Risque.cs" Line="14" Column="29" />
+      <File FileName="Projet_Audit/Models/IdentityModels.cs" Line="11" Column="6" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Projet__Audit PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
