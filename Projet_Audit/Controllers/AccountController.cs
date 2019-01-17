@@ -152,9 +152,14 @@ namespace Projet_Audit.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email,Nom=model.Nom,Prenom=model.Prenom };
+             
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    if (model.Email.Equals("Admin@admin.com"))
+                    {
+                        UserManager.AddToRole(UserManager.FindByEmail(model.Email).Id, "Admin");
+                    }
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // Pour plus d'informations sur l'activation de la confirmation de compte et de la réinitialisation de mot de passe, visitez https://go.microsoft.com/fwlink/?LinkID=320771

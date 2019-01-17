@@ -144,14 +144,14 @@ namespace Projet_Audit.Controllers
             ISlide firstSlide = clonedPresentation.Slides[1];
 
             //Adds a textbox in a slide by specifying its position and size
-            IShape Title = firstSlide.AddTextBox(350, 20, 300, 80);
+            IShape Title = firstSlide.AddTextBox(350, 20, 400, 80);
 
             //Adds a paragraph in the body of the textShape
             IParagraph paragraph = Title.TextBody.AddParagraph();
 
             //Adds a textPart in the paragraph
             ITextPart text = paragraph.AddTextPart("Audit de sécurité des SI");
-            text.Font.FontSize = 44;
+            text.Font.FontSize = 35;
             text.UnderlineColor.SystemColor = Color.White;
 
 
@@ -223,14 +223,14 @@ namespace Projet_Audit.Controllers
              firstSlide = clonedPresentation.Slides[2];
 
             //Adds a textbox in a slide by specifying its position and size
-             Title = firstSlide.AddTextBox(350, 20, 300, 80);
+             Title = firstSlide.AddTextBox(350, 20, 400, 80);
 
             //Adds a paragraph in the body of the textShape
              paragraph = Title.TextBody.AddParagraph();
 
             //Adds a textPart in the paragraph
              text = paragraph.AddTextPart("Audit de sécurité des SI");
-            text.Font.FontSize = 44;
+            text.Font.FontSize = 35;
             text.UnderlineColor.SystemColor = Color.White;
 
              Title = firstSlide.AddTextBox(80, 60, 800, 80);

@@ -10,6 +10,7 @@ using Projet_Audit.Models;
 
 namespace Projet_Audit.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class QuestionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
