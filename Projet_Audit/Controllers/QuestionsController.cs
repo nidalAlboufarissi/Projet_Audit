@@ -52,6 +52,7 @@ namespace Projet_Audit.Controllers
         public ActionResult Create([Bind(Include = "Id_question,NumQuestion,MainQuestion,Reponse,Commentaire,Coefficient,Recommandation,MesurePropose,Id_risque")] Question question)
         {
             Risque r = db.Risques.Find(question.Id_risque);
+            r.score += question.Coefficient;
             string[] s = r.Type.Split(' ');
             string num = "";
             foreach (var i in s)

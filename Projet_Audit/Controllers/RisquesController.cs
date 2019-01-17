@@ -51,6 +51,7 @@ namespace Projet_Audit.Controllers
         {
             if (ModelState.IsValid)
             {
+                risque.score = 0;
                 db.Risques.Add(risque);
                 db.SaveChanges();
                 return RedirectToAction("Index");

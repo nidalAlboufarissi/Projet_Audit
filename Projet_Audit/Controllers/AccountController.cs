@@ -160,6 +160,8 @@ namespace Projet_Audit.Controllers
                     {
                         UserManager.AddToRole(UserManager.FindByEmail(model.Email).Id, "Admin");
                     }
+                    else
+                        UserManager.AddToRole(UserManager.FindByEmail(model.Email).Id, "Client");
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // Pour plus d'informations sur l'activation de la confirmation de compte et de la réinitialisation de mot de passe, visitez https://go.microsoft.com/fwlink/?LinkID=320771

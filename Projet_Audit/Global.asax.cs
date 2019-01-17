@@ -24,8 +24,11 @@ namespace Projet_Audit
             if(db.Roles.ToList().Count==0)
             {
                 Microsoft.AspNet.Identity.EntityFramework.IdentityRole role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                Microsoft.AspNet.Identity.EntityFramework.IdentityRole role2 = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
                 role.Name="Admin";
                 db.Roles.Add(role);
+                role2.Name = "Client";
+                db.Roles.Add(role2);
                 db.SaveChanges();
             }
             

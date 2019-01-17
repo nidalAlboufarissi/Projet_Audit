@@ -14,6 +14,7 @@ namespace Projet_Audit.Models
         public int Id_risque { get; set; }
         [Required]
         public String Type { get; set; }
+
         public int score { get; set; }
 
         public virtual ICollection<Question> Questions { get; set; }
